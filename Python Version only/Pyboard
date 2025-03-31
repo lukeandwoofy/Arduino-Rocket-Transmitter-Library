@@ -1,0 +1,30 @@
+/** Python version
+
+import time
+from RF24 import RF24
+from Adafruit_BMP085 import BMP085
+
+# Initialize the radio and BMP085 sensor
+radio = RF24(9, 10)
+bmp = BMP085.BMP085()
+
+address = b"00001"
+altitude = 0.0
+
+# Setup the barometer and NRF24L01 transmitter module
+def setup():
+    radio.begin()
+    radio.openWritingPipe(address)
+    radio.setPALevel(RF24.PA_MIN)
+    radio.stopListening()
+    bmp.begin()
+
+def loop():
+    global altitude
+    altitude = bmp.readAltitude()
+    radio.write(altitude)
+    time.sleep(1)
+
+setup()
+while True:
+    loop()
