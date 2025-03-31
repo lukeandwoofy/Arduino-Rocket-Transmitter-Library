@@ -1,0 +1,26 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <Adafruit_BMP085.h>
+
+// Install Adafruit_BMP085 file in the library manager
+RF24 radio(9, 10);
+Adafruit_BMP085 bmp;
+
+const byte address[6] = "00001";
+float altitude;
+// setup the barometer and NRF24L01 transmitter module
+void setup() {
+  radio.begin();
+  radio.openWritingPipe(address);
+  radio.setPALevel(RF24_PA_MIN);
+  radio.stopListening();
+  bmp.begin();
+}
+
+void loop() {
+  altitude = bmp.readAltitude();
+  radio.write(&altitude, sizeof(altitude));
+  delay(1000);
+}
+
