@@ -5,6 +5,7 @@ A short library for SpaceFish members or engineers to use in the OrionX OS V1.0 
 
 ## Overview
 
+When using the code, make sure to use the C++ file or use the Micropython Lab as this is designed for Arduino not a Pyboardvbut at request I will make a pyboard modified code.
 The Arduino Rocket Transmitter Library is designed specifically for SpaceFish members and engineers working on the OrionX OS V1.0 Galileo rocket. This library provides essential functionalities for transmitting data from the rocket to ground stations, ensuring reliable communication and telemetry during rocket launches and operations.
 
 ## Features
